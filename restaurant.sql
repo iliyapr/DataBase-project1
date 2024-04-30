@@ -1,4 +1,4 @@
-USE Resturant
+USE restaurant
 
 CREATE TABLE Employee (
 	ssn NCHAR(10) PRIMARY KEY,
@@ -83,8 +83,8 @@ GO
 CREATE TABLE [Order] (
 	id BIGINT IDENTITY(1,1) PRIMARY KEY,
 	customer_id BIGINT NOT NULL,
-	shipper_ssn NCHAR(11),
-	waiter_ssn NCHAR(11),
+	shipper_ssn NCHAR(10),
+	waiter_ssn NCHAR(10),
 	ordered_at DATE NOT NULL,
 	discount INT,
 	status INT NOT NULL,
@@ -94,11 +94,13 @@ CREATE TABLE [Order] (
 	FOREIGN KEY (customer_id) REFERENCES Customer (id) 
 		ON UPDATE CASCADE,
 		
-	FOREIGN KEY (shipper_ssn) REFERENCES Shipper (ssn) 
-		ON UPDATE CASCADE,
+
 		
 	FOREIGN KEY (waiter_ssn) REFERENCES Waiter (ssn) 
-		ON UPDATE CASCADE
+		ON UPDATE CASCADE,
+
+	FOREIGN KEY (shipper_ssn) REFERENCES Shipper (ssn) 
+	     
 )
 GO
 
@@ -121,8 +123,9 @@ CREATE TABLE Item (
 	title NVARCHAR(255) NOT NULL,
 	cateorgy NVARCHAR(255),
 	description TEXT,
-	cooking BIT(1) NOT NULL,
+	cooking BIT NOT NULL,
 	price INT NOT NULL,
+	amount INT NOT NULL
 )
 GO
 
@@ -161,7 +164,7 @@ GO
 
 
 CREATE TABLE chef_Recipe (
-	chef_ssn NCHAR(11) NOT NULL,
+	chef_ssn NCHAR(10) NOT NULL,
 	recipe_id INT NOT NULL,
 	
 	PRIMARY KEY (chef_ssn, recipe_id),
@@ -199,7 +202,7 @@ GO
 CREATE TABLE Storehouse (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	address NVARCHAR(255),
-	manager_ssn NCHAR(11),
+	manager_ssn NCHAR(10),
 
 	FOREIGN KEY (manager_ssn) REFERENCES Manager (ssn)
 		ON UPDATE CASCADE
