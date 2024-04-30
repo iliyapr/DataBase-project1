@@ -85,6 +85,7 @@ CREATE TABLE [Order] (
 	customer_id BIGINT NOT NULL,
 	shipper_ssn NCHAR(10),
 	waiter_ssn NCHAR(10),
+	table_number INT ,
 	ordered_at DATE NOT NULL,
 	discount INT,
 	status INT NOT NULL,
@@ -94,28 +95,19 @@ CREATE TABLE [Order] (
 	FOREIGN KEY (customer_id) REFERENCES Customer (id) 
 		ON UPDATE CASCADE,
 		
-
-		
-	FOREIGN KEY (waiter_ssn) REFERENCES Waiter (ssn) 
+    FOREIGN KEY (waiter_ssn) REFERENCES Waiter (ssn) 
 		ON UPDATE CASCADE,
 
-	FOREIGN KEY (shipper_ssn) REFERENCES Shipper (ssn) 
+	FOREIGN KEY (shipper_ssn) REFERENCES Shipper (ssn) ,
+
+	FOREIGN KEY (table_number) REFERENCES [Table] (number)
+		ON UPDATE CASCADE
 	     
 )
 GO
 
 
-CREATE TABLE Order_Table (
-	order_id BIGINT NOT NULL,
-	table_number INT NOT NULL,
-	
-	PRIMARY KEY (order_id, table_number),
-	FOREIGN KEY (order_id) REFERENCES [Order] (id) 
-		ON UPDATE CASCADE,
-	FOREIGN KEY (table_number) REFERENCES [Table] (number) 
-		ON UPDATE CASCADE
-)
-GO
+
 
 
 CREATE TABLE Item (
