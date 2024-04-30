@@ -125,7 +125,7 @@ GO
 CREATE TABLE Order_Item (
 	order_id BIGINT NOT NULL,
 	item_id INT NOT NULL,
-	item_number INT NOT NULL,
+	amount INT NOT NULL,
 	rate INT,
 	PRIMARY KEY (order_id, item_id),
 	FOREIGN KEY (order_id) REFERENCES [Order] (id) 
