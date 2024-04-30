@@ -17,6 +17,7 @@ CREATE TABLE Employee (
 )
 GO
 
+
 CREATE TABLE Chef (
 	ssn NCHAR(10) PRIMARY KEY,
 	[style] NVARCHAR(50),
@@ -100,6 +101,7 @@ CREATE TABLE [Order] (
 		ON UPDATE CASCADE
 )
 GO
+
 
 CREATE TABLE Order_Table (
 	order_id BIGINT NOT NULL,
