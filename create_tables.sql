@@ -95,9 +95,8 @@ CREATE TABLE [Order] (
 	FOREIGN KEY (customer_id) REFERENCES Customer (id) 
 		ON UPDATE CASCADE,
 		
-    FOREIGN KEY (waiter_ssn) REFERENCES Waiter (ssn) 
-		ON UPDATE CASCADE,
-
+    FOREIGN KEY (waiter_ssn) REFERENCES Waiter (ssn),
+    
 	FOREIGN KEY (shipper_ssn) REFERENCES Shipper (ssn) ,
 
 	FOREIGN KEY (table_number) REFERENCES [Table] (number)
