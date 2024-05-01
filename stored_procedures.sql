@@ -27,6 +27,26 @@ END
 
 GO
 
+CREATE PROCEDURE IncreaseItemPrice (@item_id INT)
+AS
+BEGIN
+
+    DECLARE @current_price INT
+
+    SELECT @current_price = price
+    FROM Item
+    Where id = @item_id
+
+
+    -- Increase item price in the Table Item by 10 percent
+    UPDATE Item
+    SET [price] = (@item_id * 1.1)
+    WHERE number = @table_number
+END
+
+GO
+
+
 -- create function
 
 CREATE FUNCTION GetTotalPayments ( @start_date DATE,  @end_date DATE)
