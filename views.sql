@@ -1,7 +1,7 @@
 CREATE VIEW daily_revenue
 AS
 SELECT
-    o.orderd_at, SUM(oi.amount * i.price) AS total_sale
+    o.ordered_at, SUM(oi.amount * i.price) AS total_sale
 FROM 
     [Order] AS o
 JOIN Order_Item AS oi
@@ -9,14 +9,12 @@ JOIN Order_Item AS oi
 JOIN Item AS i 
     ON i.id = oi.item_id
 GROUP BY o.ordered_at
-ORDER BY o.ordered_at DESC
-
 GO
 
 CREATE VIEW customers_with_the_most_orders
 AS
 SELECT 
-    GetFullName(c.first_name, c.last_name), 
+    dbo.GetFullName(c.first_name, c.last_name) AS full_name, 
     total_paid, 
     total_orders
 FROM Customer AS c 
@@ -31,5 +29,3 @@ JOIN Item AS i
 GROUP BY o.customer_id
 ORDER BY total_orders DESC) AS max_orders
 ON max_orders.c_id = c.id 
-
-
