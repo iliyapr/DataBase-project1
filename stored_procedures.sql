@@ -1,7 +1,3 @@
-
-
-
-
 -- create procedure 
 
 CREATE PROCEDURE UpdateTableStatus (@order_id INT)
@@ -47,36 +43,86 @@ END
 GO
 
 
+CREATE PROCEDURE UpdateShipperStatus
+    @order_id INT
+AS
+BEGIN
+    DECLARE @status INT
+    DECLARE @order_type INT
+    DECLARE @shipper_ssn nchar(10)
+    
+    -- Get the order status, order type, and shipper ID from the Order table
+
+    SELECT @status = [status] , @order_type = order_type, @shipper_ssn = shipper_ssn
+    FROM [Order]
+    WHERE id = @order_id
+    
+    -- Check if the order status is 0 and order type is 2
+
+    IF @status = 0 AND @order_type = 2
+    BEGIN
+        -- Update the shipper_status in the Shipper table to 0
+
+        UPDATE Employee
+        SET [status] = 0
+        WHERE ssn = @shipper_ssn
+
+    END
+END
+
+
 -- create function
 
 CREATE FUNCTION GetTotalPayments ( @start_date DATE,  @end_date DATE)
 
-RETURNS DECIMAL(10, 2)
+RETURNS INT
 AS
 BEGIN
-    DECLARE @total_payments DECIMAL(10, 2)
+    DECLARE @total_payments INT
     
-    SELECT @total_payments = SUM(payment)
-    FROM [Order]
-    WHERE ordered_at BETWEEN @start_date AND @end_date
+    SELECT @total_payments = SUM(i.price * oi.amount)
+    FROM [Order] AS o
+	JOIN Order_Item AS oi
+		ON o.id = oi.order_id
+	JOIN Item AS i
+		ON i.id = oi.item_id
+    WHERE O.ordered_at BETWEEN @start_date AND @end_date
 
     RETURN ISNULL(@total_payments, 0)
 END
 GO
 
-CREATE FUNCTION GetMostPopularItem ( @start_date DATE,  @end_date DATE)
+
+CREATE FUNCTION GetMeanRate ( @order_id INT)
+
+RETURNS float
+AS
+BEGIN
+
+    -- Calculate the mean rate for items in the specified order
+    DECLARE @mean_rate FLOAT
+    
+    SELECT @mean_rate = AVG(CAST(rate AS FLOAT))
+    FROM Order_Item
+    WHERE order_id = @order_id
+
+    RETURN @mean_rate
+END
+GO
+
+
+
+CREATE FUNCTION GetMostPopularItems ( @start_date DATE,  @end_date DATE)
 
 RETURNS TABLE
 AS
 RETURN
-(
 	SELECT TOP 1 Item.id, COUNT(*) AS cnt FROM [Order]
 	JOIN Order_Item ON [Order].id = Order_Item.order_id
 	JOIN Item ON Order_Item.item_id = Item.id
 	WHERE [Order].ordered_at BETWEEN @start_date AND @end_date
 	GROUP BY Item.id
 	ORDER BY cnt DESC
-);
 GO
 
 
