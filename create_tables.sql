@@ -114,7 +114,7 @@ CREATE TABLE Item (
 	description TEXT,
 	cooking BIT NOT NULL,
 	price INT NOT NULL,
-	amount INT NOT NULL
+	amount INT
 )
 
 
