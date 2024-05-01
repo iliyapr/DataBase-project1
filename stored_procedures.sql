@@ -44,6 +44,21 @@ BEGIN
 END
 GO
 
+CREATE FUNCTION GetMostPopularItem ( @start_date DATE,  @end_date DATE)
+
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT TOP 1 Item.id, COUNT(*) AS cnt FROM [Order]
+	JOIN Order_Item ON [Order].id = Order_Item.order_id
+	JOIN Item ON Order_Item.item_id = Item.id
+	WHERE [Order].ordered_at BETWEEN @start_date AND @end_date
+	GROUP BY Item.id
+	ORDER BY cnt DESC
+);
+GO
+
 -- create trigger
 
 CREATE TRIGGER UpdateItemAmount
@@ -77,6 +92,7 @@ BEGIN
 END
 
 GO
+
 
 
 
