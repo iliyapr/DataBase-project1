@@ -59,6 +59,20 @@ RETURN
 );
 GO
 
+
+CREATE FUNCTION GetFullName ( @first_name NVARCHAR(30), @last_name NVARCHAR(30))
+
+RETURNS NVARCHAR(61)
+AS
+BEGIN
+    DECLARE @full_name NVARCHAR(61);
+    
+    SET @full_name = CONCAT(@first_name, ' ', @last_name);
+
+    RETURN @full_name;
+END
+GO
+
 -- create trigger
 
 CREATE TRIGGER UpdateItemAmount
