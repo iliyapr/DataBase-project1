@@ -1,5 +1,3 @@
-USE restaurant
-
 CREATE TABLE Employee (
 	ssn NCHAR(10) PRIMARY KEY,
 	first_name NVARCHAR(30) NOT NULL,
@@ -15,7 +13,7 @@ CREATE TABLE Employee (
 	status INT NOT NULL,
 	
 )
-GO
+
 
 
 CREATE TABLE Chef (
@@ -26,7 +24,7 @@ CREATE TABLE Chef (
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Waiter (
@@ -36,7 +34,7 @@ CREATE TABLE Waiter (
 		ON DELETE CASCADE 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Shipper (
@@ -47,7 +45,7 @@ CREATE TABLE Shipper (
 		ON DELETE CASCADE 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Manager (
@@ -59,7 +57,7 @@ CREATE TABLE Manager (
 		ON DELETE CASCADE
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Customer (
@@ -69,7 +67,7 @@ CREATE TABLE Customer (
 	last_name NVARCHAR(30),
 	address NVARCHAR(255)
 )
-GO
+
 
 
 CREATE TABLE [Table] (
@@ -77,7 +75,7 @@ CREATE TABLE [Table] (
 	capacity INT NOT NULL,
 	status INT NOT NULL
 )
-GO
+
 
 
 CREATE TABLE [Order] (
@@ -103,7 +101,7 @@ CREATE TABLE [Order] (
 		ON UPDATE CASCADE
 	     
 )
-GO
+
 
 
 
@@ -118,7 +116,7 @@ CREATE TABLE Item (
 	price INT NOT NULL,
 	amount INT NOT NULL
 )
-GO
+
 
 
 CREATE TABLE Order_Item (
@@ -132,14 +130,14 @@ CREATE TABLE Order_Item (
 	FOREIGN KEY (item_id) REFERENCES [Item] (id) 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Recipe (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	instructions TEXT
 )
-GO
+
 
 
 CREATE TABLE Item_Recipe (
@@ -152,7 +150,7 @@ CREATE TABLE Item_Recipe (
 	FOREIGN KEY (recipe_id) REFERENCES Recipe (id) 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE chef_Recipe (
@@ -165,7 +163,7 @@ CREATE TABLE chef_Recipe (
 	FOREIGN KEY (recipe_id) REFERENCES Recipe (id) 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Ingredient (
@@ -174,7 +172,7 @@ CREATE TABLE Ingredient (
 	[type] NVARCHAR(255),
 	unit NVARCHAR(10)
 )
-GO
+
 
 
 CREATE TABLE Recipe_Ingredient (
@@ -188,7 +186,7 @@ CREATE TABLE Recipe_Ingredient (
 	FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id) 
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Storehouse (
@@ -199,7 +197,7 @@ CREATE TABLE Storehouse (
 	FOREIGN KEY (manager_ssn) REFERENCES Manager (ssn)
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 CREATE TABLE Storehouse_Ingredient (
@@ -213,7 +211,7 @@ CREATE TABLE Storehouse_Ingredient (
 	FOREIGN KEY (ingredient_id) REFERENCES Ingredient (id)
 		ON UPDATE CASCADE
 )
-GO
+
 
 
 
