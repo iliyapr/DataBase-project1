@@ -14,7 +14,6 @@ class Role(models.IntegerChoices):
     SHIPPER  = 3, "shipper"
 
 class Employee(AbstractUser):
-    
     SSN = models.CharField(max_length=11, unique=True)
     first_name = models.CharField(max_length=10, verbose_name="نام کارمند")
     last_name = models.CharField(max_length=10, verbose_name="فامیلی کارمند")
