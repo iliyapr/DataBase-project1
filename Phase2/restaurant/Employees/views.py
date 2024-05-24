@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404, render
 
 from rest_framework import generics
 
-from .models import Chef, Employee
+from .models import Chef, Employee, Waiter
 
-from .serializers import ChefSerializer, EmployeeSerializer
+from .serializers import ChefSerializer, EmployeeSerializer, WaiterSerializer
 
 class EmployeeRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
@@ -30,3 +30,16 @@ class ChefRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 class ChefListCreate(generics.ListCreateAPIView):
     queryset = Chef.objects.all()
     serializer_class = ChefSerializer
+
+class WaiterRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Waiter.objects.all()
+    serializer_class = WaiterSerializer
+    
+    def get_object(self):
+        ssn = self.kwargs['ssnPK']
+        employee = get_object_or_404(Employee, ssn=ssn)
+        return get_object_or_404(Waiter, ssn=employee)
+
+class WaiterListCreate(generics.ListCreateAPIView):
+    queryset = Waiter.objects.all()
+    serializer_class = WaiterSerializer
