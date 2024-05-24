@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404, render
 
 from rest_framework import generics
 
-from .models import Chef, Employee, Waiter
+from .models import Chef, Employee, Manager, Shipper, Waiter
 
-from .serializers import ChefSerializer, EmployeeSerializer, WaiterSerializer
+from .serializers import ChefSerializer, EmployeeSerializer, ManagerSerializer, ShipperSerializer, WaiterSerializer
 
 class EmployeeRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
@@ -43,3 +43,29 @@ class WaiterRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
 class WaiterListCreate(generics.ListCreateAPIView):
     queryset = Waiter.objects.all()
     serializer_class = WaiterSerializer
+
+class ManagerRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Manager.objects.all()
+    serializer_class = ManagerSerializer
+    
+    def get_object(self):
+        ssn = self.kwargs['ssnPK']
+        employee = get_object_or_404(Employee, ssn=ssn)
+        return get_object_or_404(Manager, ssn=employee)
+
+class ManagerListCreate(generics.ListCreateAPIView):
+    queryset = Manager.objects.all()
+    serializer_class = ManagerSerializer
+    
+class ShipperRetrieveUpdateDelete(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Shipper.objects.all()
+    serializer_class = ShipperSerializer
+    
+    def get_object(self):
+        ssn = self.kwargs['ssnPK']
+        employee = get_object_or_404(Employee, ssn=ssn)
+        return get_object_or_404(Shipper, ssn=employee)
+
+class ShipperListCreate(generics.ListCreateAPIView):
+    queryset = Shipper.objects.all()
+    serializer_class = ShipperSerializer
