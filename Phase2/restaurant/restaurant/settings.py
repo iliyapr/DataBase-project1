@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'sql_server.pyodbc',  # Use the 'mssql' engine for mssql-django
+#         'ENGINE': 'mssql',  # Use the 'mssql' engine for mssql-django
 #         'NAME': 'restaurant',
 #         'USER': 'sa',
 #         'PASSWORD': 'SmBJQjVaC6Fb0G4iihoTPoJm',
