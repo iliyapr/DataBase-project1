@@ -1,24 +1,9 @@
 from rest_framework import serializers
-from .models import Ingredient, Storehouse, StorehouseIngredient, Recipe, RecipeIngredient, ChefRecipe
-
-class IngredientSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ingredient
-        fields = '__all__'
-
-class StorehouseSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Storehouse
-        fields = '__all__'
+from .models import Ingredient, Storehouse, Recipe, StorehouseIngredient, RecipeIngredient, ChefRecipe
 
 class StorehouseIngredientSerializer(serializers.ModelSerializer):
     class Meta:
         model = StorehouseIngredient
-        fields = '__all__'
-
-class RecipeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Recipe
         fields = '__all__'
 
 class RecipeIngredientSerializer(serializers.ModelSerializer):
@@ -29,4 +14,26 @@ class RecipeIngredientSerializer(serializers.ModelSerializer):
 class ChefRecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChefRecipe
+        fields = '__all__'
+
+class IngredientSerializer(serializers.ModelSerializer):
+    storehouse_id = serializers.IntegerField(write_only=True, required=False)
+    recipe_id = serializers.IntegerField(write_only=True, required=False)
+    amount_in_storehouse = serializers.IntegerField(write_only=True, required=False)
+    amount_in_recipe = serializers.IntegerField(write_only=True, required=False)
+
+    class Meta:
+        model = Ingredient
+        fields = '__all__'
+
+class StorehouseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Storehouse
+        fields = '__all__'
+
+class RecipeSerializer(serializers.ModelSerializer):
+    chef_ssn = serializers.IntegerField(write_only=True, required=False)
+
+    class Meta:
+        model = Recipe
         fields = '__all__'
