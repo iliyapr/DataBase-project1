@@ -102,15 +102,16 @@ class StorehouseDeleteAPIView(APIView):
 class RecipeCreateAPIView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = RecipeSerializer(data=request.data)
+        # if serializer.is_valid():
+        #     recipe = serializer.save()
+
+            # # Update ChefRecipe if chef_ssn is provided
+            # chef_ssn = serializer.validated_data.get('chef_ssn')
+            # if chef_ssn:
+            #     ChefRecipe.objects.create(chef_ssn=chef_ssn, recipe=recipe)
         if serializer.is_valid():
-            recipe = serializer.save()
-
-            # Update ChefRecipe if chef_ssn is provided
-            chef_ssn = serializer.validated_data.get('chef_ssn')
-            if chef_ssn:
-                ChefRecipe.objects.create(chef_ssn=chef_ssn, recipe=recipe)
-
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            serializer.save()
+            return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class RecipeUpdateAPIView(APIView):
@@ -121,16 +122,17 @@ class RecipeUpdateAPIView(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         serializer = RecipeSerializer(recipe, data=request.data)
+        # if serializer.is_valid():
+        #     recipe = serializer.save()
+
+            # # Update ChefRecipe if chef_ssn is provided
+            # chef_ssn = serializer.validated_data.get('chef_ssn')
+            # if chef_ssn:
+            #     chef_recipe, created = ChefRecipe.objects.update_or_create(
+            #         chef_ssn=chef_ssn, recipe=recipe
+            #     )
         if serializer.is_valid():
-            recipe = serializer.save()
-
-            # Update ChefRecipe if chef_ssn is provided
-            chef_ssn = serializer.validated_data.get('chef_ssn')
-            if chef_ssn:
-                chef_recipe, created = ChefRecipe.objects.update_or_create(
-                    chef_ssn=chef_ssn, recipe=recipe
-                )
-
+            serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

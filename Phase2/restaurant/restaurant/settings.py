@@ -78,23 +78,23 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mssql',  # Use the 'mssql' engine for mssql-django
-#         'NAME': 'restaurant',
-#         'USER': 'sa',
-#         'PASSWORD': 'SmBJQjVaC6Fb0G4iihoTPoJm',
-#         'HOST': 'grand-teton.liara.cloud',
-#         'PORT': '1433',  # Default port for SQL Server
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase.db',  # Replace with your desired database filename
+        'ENGINE': 'mssql',  # Use the 'mssql' engine for mssql-django
+        'NAME': 'master',
+        'USER': 'sa',
+        'PASSWORD': 'saeed.1372336',
+        'HOST': 'localhost',
+        'PORT': '1433',  # Default port for SQL Server
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase.db',  # Replace with your desired database filename
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
