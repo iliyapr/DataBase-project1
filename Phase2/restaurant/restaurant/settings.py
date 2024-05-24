@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase.db',  # Replace with your desired database filename
+        'NAME': BASE_DIR / 'db.sqlite3',  # Replace with your desired database filename
     }
 }
 
