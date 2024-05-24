@@ -4,15 +4,14 @@ from Customers.models import Customer
 from Inventory.models import Recipe
 
 class Item(models.Model):
-    title = models.CharField(max_length=255, db_collation='SQL_Latin1_General_CP1_CI_AS')
-    cateorgy = models.CharField(max_length=255, db_collation='SQL_Latin1_General_CP1_CI_AS', blank=True, null=True)
-    description = models.TextField(db_collation='SQL_Latin1_General_CP1_CI_AS', blank=True, null=True)  # This field type is a guess.
+    title = models.CharField(max_length=255)
+    cateorgy = models.CharField(max_length=255, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)  # This field type is a guess.
     cooking = models.BooleanField()
     price = models.IntegerField()
     amount = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'Item'
 
 class Order(models.Model):
@@ -28,7 +27,6 @@ class Order(models.Model):
     order_type = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'Order'
 
 class OrderItem(models.Model):
@@ -38,7 +36,6 @@ class OrderItem(models.Model):
     rate = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
         db_table = 'Order_Item'
         unique_together = (('order', 'item'),)
 
@@ -48,7 +45,6 @@ class Table(models.Model):
     status = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'Table'
 
 class ItemRecipe(models.Model):
@@ -56,6 +52,5 @@ class ItemRecipe(models.Model):
     recipe = models.ForeignKey(Recipe, models.DO_NOTHING)
 
     class Meta:
-        managed = False
         db_table = 'Item_Recipe'
         unique_together = (('item', 'recipe'),)
