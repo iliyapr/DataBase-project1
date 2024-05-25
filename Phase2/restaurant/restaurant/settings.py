@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-=4!#@b(eourx080te17_gl3(__l*$uq!pc0y=35rzb0)=^#4ax"
+SECRET_KEY = os.environ.get("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,7 +87,7 @@ DATABASES = {
         "ENGINE": "mssql",
         "NAME": os.environ.get("DATABASE_NAME", "frzn"),
         "USER": os.environ.get("DATABASE_USER", "sa"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD", "English@emad1"),
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
         "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
         "PORT": os.environ.get("DATABASE_PORT", "1433"),
     }
