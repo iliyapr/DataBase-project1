@@ -1,0 +1,1069 @@
+{
+	"info": {
+		"_postman_id": "ac035735-0422-4be9-b5ab-4462fb633fad",
+		"name": "Restaurant",
+		"description": "Collection for testing Django REST API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29338167"
+	},
+	"item": [
+		{
+			"name": "Employees",
+			"item": [
+				{
+					"name": "Get Employees",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"birth_date\": \"1990-01-01\",\n  \"address\": \"123 Main St\",\n  \"phone_number\": \"5551234567\",\n  \"gender\": 1,\n  \"resume\": \"Experienced chef\",\n  \"bank_account_number\": \"1234567890123456\",\n  \"started_at\": \"2020-01-01\",\n  \"role\": \"Chef\",\n  \"status\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employees",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"birth_date\": \"1991-01-01\",\n  \"address\": \"456 Main St\",\n  \"phone_number\": \"5557654321\",\n  \"gender\": 2,\n  \"resume\": \"Experienced manager\",\n  \"bank_account_number\": \"6543210987654321\",\n  \"started_at\": \"2019-01-01\",\n  \"role\": \"Manager\",\n  \"status\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chefs",
+			"item": [
+				{
+					"name": "Get Chefs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Chef",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"style\": \"Italian\",\n  \"uniform_size\": 42\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Chef",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"style\": \"French\",\n  \"uniform_size\": 40\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chef",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/chefs/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"chefs",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Waiters",
+			"item": [
+				{
+					"name": "Get Waiters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/waiters",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"waiters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Waiter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"uniform_size\": 38\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/waiters",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"waiters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Waiter",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"uniform_size\": 40\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/waiters/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"waiters",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Waiter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/waiters/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"waiters",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Managers",
+			"item": [
+				{
+					"name": "Get Managers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/managers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"managers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Manager",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"username\": \"manager1\",\n  \"password\": \"pass123\",\n  \"responsibitiy\": \"Manage the team\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/managers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"managers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Manager",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"manager2\",\n  \"password\": \"pass456\",\n  \"responsibitiy\": \"Oversee operations\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/managers/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"managers",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Manager",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/managers/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"managers",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shippers",
+			"item": [
+				{
+					"name": "Get Shippers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/shippers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"shippers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Shipper",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"vehicle_plate_number\": \"ABC1234\",\n  \"vehicle_model\": \"Toyota\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/shippers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"shippers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Shipper",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehicle_plate_number\": \"XYZ5678\",\n  \"vehicle_model\": \"Honda\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/shippers/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"shippers",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Shipper",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/shippers/1234567890",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"shippers",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Get Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone_number\": \"5551234567\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"address\": \"123 Main St\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/customers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"phone_number\": \"5557654321\",\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"address\": \"456 Main St\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/customers/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingredients",
+			"item": [
+				{
+					"name": "Get Ingredients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/ingredients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ingredients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ingredient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Tomato\",\n  \"type\": \"Vegetable\",\n  \"unit\": \"kg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/ingredients",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ingredients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ingredient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Potato\",\n  \"type\": \"Vegetable\",\n  \"unit\": \"kg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/ingredients/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ingredients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ingredient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/ingredients/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"ingredients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Storehouses",
+			"item": [
+				{
+					"name": "Get Storehouses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/storehouses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"storehouses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Storehouse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"address\": \"Warehouse 1\",\n  \"manager_ssn\": \"1234567890\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/storehouses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"storehouses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Storehouse",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"address\": \"Warehouse 2\",\n  \"manager_ssn\": \"0987654321\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/storehouses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"storehouses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Storehouse",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/storehouses/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"storehouses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Get Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"instructions\": \"Chop the vegetables and sauté them.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/recipes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Recipe",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"instructions\": \"Boil the vegetables and blend them.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/recipes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/recipes/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Get Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pizza\",\n  \"type\": 1,\n  \"recipe_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/items",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Pasta\",\n  \"type\": 2,\n  \"recipe_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/items/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/items/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_phone_number\": \"5551234567\",\n  \"waiter_ssn\": \"1234567890\",\n  \"is_completed\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer_phone_number\": \"5557654321\",\n  \"waiter_ssn\": \"0987654321\",\n  \"is_completed\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/orders/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tables",
+			"item": [
+				{
+					"name": "Get Tables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Table",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": 1,\n  \"seats\": 4,\n  \"location\": \"Near window\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/tables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Table",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": 2,\n  \"seats\": 2,\n  \"location\": \"Near door\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/tables/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"tables",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Table",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/tables/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"tables",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
