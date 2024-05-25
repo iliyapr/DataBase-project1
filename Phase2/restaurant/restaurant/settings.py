@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # third parties
     "rest_framework",
+    "drf_yasg",
     # project apps
     "Employees",
     "Inventory",
@@ -84,9 +85,9 @@ WSGI_APPLICATION = "restaurant.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "mssql",
-        "NAME": os.environ.get("DATABASE_NAME", "restaurant"),
+        "NAME": os.environ.get("DATABASE_NAME", "frzn"),
         "USER": os.environ.get("DATABASE_USER", "sa"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD", "English@emad1"),
         "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
         "PORT": os.environ.get("DATABASE_PORT", "1433"),
     }
