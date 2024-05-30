@@ -1,17 +1,18 @@
 {
 	"info": {
-		"_postman_id": "ac035735-0422-4be9-b5ab-4462fb633fad",
+		"_postman_id": "6670201e-5677-410d-9604-f3d67af94cef",
 		"name": "Restaurant",
-		"description": "Collection for testing Django REST API endpoints",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29338167"
+		"_exporter_id": "26186272",
+		"_collection_link": "https://orange-shuttle-717384.postman.co/workspace/Unit-Selection~a38fafde-ad19-4e21-b54f-77aa08a3bc27/collection/26186272-6670201e-5677-410d-9604-f3d67af94cef?action=share&source=collection_link&creator=26186272"
 	},
 	"item": [
 		{
-			"name": "Employees",
+			"name": "Employee",
 			"item": [
 				{
-					"name": "Get Employees",
+					"name": "Get one employee",
 					"event": [
 						{
 							"listen": "test",
@@ -30,10 +31,31 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/employees",
+							"raw": "localhost:8000/api/employees",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
+							"path": [
+								"api",
+								"employees"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
 							"path": [
 								"api",
 								"employees"
@@ -43,783 +65,957 @@
 					"response": []
 				},
 				{
-					"name": "Create Employee",
+					"name": "Create employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"birth_date\": \"1990-01-01\",\n  \"address\": \"123 Main St\",\n  \"phone_number\": \"5551234567\",\n  \"gender\": 1,\n  \"resume\": \"Experienced chef\",\n  \"bank_account_number\": \"1234567890123456\",\n  \"started_at\": \"2020-01-01\",\n  \"role\": \"Chef\",\n  \"status\": 1\n}"
+							"raw": "{\n    \"ssn\": 1234566,\n    \"first_name\": \"arman\",\n    \"last_name\": \"shakerian\",\n    \"phone_number\": \"09101509524\",\n    \"started_at\": \"2022-10-10\",\n    \"status\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/employees",
+							"raw": "localhost:8000/api/employees",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"employees"
 							]
-						}
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 					},
 					"response": []
 				},
 				{
-					"name": "Update Employee",
+					"name": "Update employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"birth_date\": \"1991-01-01\",\n  \"address\": \"456 Main St\",\n  \"phone_number\": \"5557654321\",\n  \"gender\": 2,\n  \"resume\": \"Experienced manager\",\n  \"bank_account_number\": \"6543210987654321\",\n  \"started_at\": \"2019-01-01\",\n  \"role\": \"Manager\",\n  \"status\": 1\n}"
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/employees/1234567890",
+							"raw": "localhost:8000/api/employees",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"employees",
-								"1234567890"
+								"employees"
 							]
-						}
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Employee",
+					"name": "Delete employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/api/employees/1234567890",
+							"raw": "localhost:8000/api/employees",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"employees",
-								"1234567890"
+								"employees"
 							]
-						}
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Chefs",
+			"name": "Chef",
 			"item": [
 				{
-					"name": "Get Chefs",
+					"name": "Get one chef Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/chefs",
+							"raw": "localhost:8000/api/chefs/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
-							"path": [
-								"api",
-								"chefs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Chef",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"style\": \"Italian\",\n  \"uniform_size\": 42\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/chefs",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"chefs"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Chef",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"style\": \"French\",\n  \"uniform_size\": 40\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/chefs/1234567890",
-							"host": [
-								"{{baseUrl}}"
-							],
+							"port": "8000",
 							"path": [
 								"api",
 								"chefs",
-								"1234567890"
+								""
 							]
-						}
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Chef",
+					"name": "Get list of chef",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/chefs/1234567890",
+							"raw": "localhost:8000/api/chefs/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"chefs",
-								"1234567890"
+								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create chef",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"style\": \"Japanese\",\n    \"uniform_size\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/chefs/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chefs",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update chef",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/chefs/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chefs",
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete chef",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/chefs/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"chefs",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Waiters",
+			"name": "Waiter",
 			"item": [
 				{
-					"name": "Get Waiters",
+					"name": "Get one waiter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/waiters",
+							"raw": "localhost:8000/api/waiters/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
-							"path": [
-								"api",
-								"waiters"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Waiter",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"uniform_size\": 38\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/waiters",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"waiters"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Waiter",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"uniform_size\": 40\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/waiters/1234567890",
-							"host": [
-								"{{baseUrl}}"
-							],
+							"port": "8000",
 							"path": [
 								"api",
 								"waiters",
-								"1234567890"
+								""
 							]
-						}
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Waiter",
+					"name": "Get list of waiters",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/waiters/1234567890",
+							"raw": "localhost:8000/api/waiters/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"waiters",
-								"1234567890"
+								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create waiter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"style\": \"Japanese\",\n    \"uniform_size\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/waiters/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"waiters",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update waiter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/waiters/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"waiters",
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete waiter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/waiters/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"waiters",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Managers",
+			"name": "Manager",
 			"item": [
 				{
-					"name": "Get Managers",
+					"name": "Get one manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/managers",
+							"raw": "localhost:8000/api/managers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
-							"path": [
-								"api",
-								"managers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Manager",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"username\": \"manager1\",\n  \"password\": \"pass123\",\n  \"responsibitiy\": \"Manage the team\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/managers",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"managers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Manager",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"username\": \"manager2\",\n  \"password\": \"pass456\",\n  \"responsibitiy\": \"Oversee operations\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/managers/1234567890",
-							"host": [
-								"{{baseUrl}}"
-							],
+							"port": "8000",
 							"path": [
 								"api",
 								"managers",
-								"1234567890"
+								""
 							]
-						}
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Manager",
+					"name": "Get list of managers",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/managers/1234567890",
+							"raw": "localhost:8000/api/managers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"managers",
-								"1234567890"
+								""
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"responsibitiy\": \"head chef\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/managers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"managers",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/managers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"managers",
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/managers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"managers",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Shippers",
+			"name": "Shipper",
 			"item": [
 				{
-					"name": "Get Shippers",
+					"name": "Get one shipper",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/shippers",
+							"raw": "localhost:8000/api/shippers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
-							"path": [
-								"api",
-								"shippers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Shipper",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"ssn\": \"1234567890\",\n  \"vehicle_plate_number\": \"ABC1234\",\n  \"vehicle_model\": \"Toyota\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/shippers",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"shippers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Shipper",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"vehicle_plate_number\": \"XYZ5678\",\n  \"vehicle_model\": \"Honda\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/shippers/1234567890",
-							"host": [
-								"{{baseUrl}}"
-							],
+							"port": "8000",
 							"path": [
 								"api",
 								"shippers",
-								"1234567890"
+								""
 							]
-						}
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Shipper",
+					"name": "Get list of shippers",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/shippers/1234567890",
+							"raw": "localhost:8000/api/shippers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"shippers",
-								"1234567890"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Customers",
-			"item": [
-				{
-					"name": "Get Customers",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/customers",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"customers"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Customer",
+					"name": "Create shipper",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"phone_number\": \"5551234567\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"address\": \"123 Main St\"\n}"
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/customers",
+							"raw": "localhost:8000/api/shippers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"customers"
+								"shippers",
+								""
 							]
-						}
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 					},
 					"response": []
 				},
 				{
-					"name": "Update Customer",
+					"name": "Update shipper",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"phone_number\": \"5557654321\",\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Doe\",\n  \"address\": \"456 Main St\"\n}"
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/customers/1",
+							"raw": "localhost:8000/api/shippers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"customers",
-								"1"
+								"shippers",
+								""
 							]
-						}
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Customer",
+					"name": "Delete shipper",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/api/customers/1",
+							"raw": "localhost:8000/api/shippers/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"customers",
-								"1"
+								"shippers",
+								""
 							]
-						}
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Ingredients",
+			"name": "Item",
 			"item": [
 				{
-					"name": "Get Ingredients",
+					"name": "Get an item",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/ingredients",
+							"raw": "localhost:8000/api/items/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"ingredients"
+								"items",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Create Ingredient",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Tomato\",\n  \"type\": \"Vegetable\",\n  \"unit\": \"kg\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/ingredients",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"ingredients"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Ingredient",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Potato\",\n  \"type\": \"Vegetable\",\n  \"unit\": \"kg\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/ingredients/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"ingredients",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Ingredient",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/ingredients/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"ingredients",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Storehouses",
-			"item": [
-				{
-					"name": "Get Storehouses",
+					"name": "Get list of Items",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/storehouses",
+							"raw": "localhost:8000/api/items/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"storehouses"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Storehouse",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"address\": \"Warehouse 1\",\n  \"manager_ssn\": \"1234567890\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/storehouses",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"storehouses"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Storehouse",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"address\": \"Warehouse 2\",\n  \"manager_ssn\": \"0987654321\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/storehouses/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"storehouses",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Storehouse",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/storehouses/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"storehouses",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Recipes",
-			"item": [
-				{
-					"name": "Get Recipes",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/recipes",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"recipes"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Recipe",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"instructions\": \"Chop the vegetables and sauté them.\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/recipes",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"recipes"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Recipe",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"instructions\": \"Boil the vegetables and blend them.\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/recipes/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"recipes",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Recipe",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/recipes/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"recipes",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Items",
-			"item": [
-				{
-					"name": "Get Items",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/items",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"items"
+								"items",
+								""
 							]
 						}
 					},
@@ -827,173 +1023,178 @@
 				},
 				{
 					"name": "Create Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Pizza\",\n  \"type\": 1,\n  \"recipe_id\": 1\n}"
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/items",
+							"raw": "localhost:8000/api/items/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"items"
+								"items",
+								""
 							]
-						}
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 					},
 					"response": []
 				},
 				{
 					"name": "Update Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Pasta\",\n  \"type\": 2,\n  \"recipe_id\": 2\n}"
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/items/1",
+							"raw": "localhost:8000/api/items/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"items",
-								"1"
+								""
 							]
-						}
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
 					},
 					"response": []
 				},
 				{
 					"name": "Delete Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/api/items/1",
+							"raw": "localhost:8000/api/items/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"items",
-								"1"
+								""
 							]
-						}
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Orders",
+			"name": "Table",
 			"item": [
 				{
-					"name": "Get Orders",
+					"name": "Get a Table",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/orders",
+							"raw": "localhost:8000/api/tables",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
-							"path": [
-								"api",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Order",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"customer_phone_number\": \"5551234567\",\n  \"waiter_ssn\": \"1234567890\",\n  \"is_completed\": false\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/orders",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"orders"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Order",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"customer_phone_number\": \"5557654321\",\n  \"waiter_ssn\": \"0987654321\",\n  \"is_completed\": true\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/api/orders/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"orders",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Order",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/orders/1",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"orders",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Tables",
-			"item": [
-				{
-					"name": "Get Tables",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/tables",
-							"host": [
-								"{{baseUrl}}"
-							],
+							"port": "8000",
 							"path": [
 								"api",
 								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of Tables",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/tables/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tables",
+								""
 							]
 						}
 					},
@@ -1001,69 +1202,529 @@
 				},
 				{
 					"name": "Create Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"status\": 1,\n  \"seats\": 4,\n  \"location\": \"Near window\"\n}"
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/tables",
+							"raw": "localhost:8000/api/tables/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"tables"
+								"tables",
+								""
 							]
-						}
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
 					},
 					"response": []
 				},
 				{
 					"name": "Update Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"status\": 2,\n  \"seats\": 2,\n  \"location\": \"Near door\"\n}"
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/tables/1",
+							"raw": "localhost:8000/api/tables/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
 								"tables",
-								"1"
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Table",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/tables/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tables",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Get an Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete Table",
+					"name": "Get list of Orders",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/tables/1",
+							"raw": "localhost:8000/api/orders/",
 							"host": [
-								"{{baseUrl}}"
+								"localhost"
 							],
+							"port": "8000",
 							"path": [
 								"api",
-								"tables",
-								"1"
+								"orders",
+								""
 							]
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Get a Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/customers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
 		}
 	]
 }
