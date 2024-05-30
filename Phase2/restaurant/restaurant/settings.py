@@ -27,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^x)74_sj-0*i5*k#q0jpp$(cw49c9l$=ub+siqfl#t*2rc#x^f'
+# SECRET_KEY = 'django-insecure-^x)74_sj-0*i5*k#q0jpp$(cw49c9l$=ub+siqfl#t*2rc#x^f'
+SECRET_KEY = os.environ.get("SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -89,24 +90,23 @@ WSGI_APPLICATION = "restaurant.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-#TODO
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "mssql",
-#         "NAME": os.environ.get("DATABASE_NAME", "frzn"),
-#         "USER": os.environ.get("DATABASE_USER", "sa"),
-#         "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-#         "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
-#         "PORT": os.environ.get("DATABASE_PORT", "1433"),
-#     }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3'
+        "ENGINE": "mssql",
+        "NAME": os.environ.get("DATABASE_NAME", "frzn"),
+        "USER": os.environ.get("DATABASE_USER", "sa"),
+        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+        "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
+        "PORT": os.environ.get("DATABASE_PORT", "1433"),
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3'
+#     }
+# }
 
 
 # Password validation
