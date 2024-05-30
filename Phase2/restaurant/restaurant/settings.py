@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import sqlite3
+
+import django
+import django.db
+import django.db.backends
+import django.db.backends.sqlite3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,14 +88,23 @@ WSGI_APPLICATION = "restaurant.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+#TODO
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "mssql",
+#         "NAME": os.environ.get("DATABASE_NAME", "frzn"),
+#         "USER": os.environ.get("DATABASE_USER", "sa"),
+#         "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
+#         "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
+#         "PORT": os.environ.get("DATABASE_PORT", "1433"),
+#     }
+# }
+
 DATABASES = {
     "default": {
-        "ENGINE": "mssql",
-        "NAME": os.environ.get("DATABASE_NAME", "frzn"),
-        "USER": os.environ.get("DATABASE_USER", "sa"),
-        "PASSWORD": os.environ.get("DATABASE_PASSWORD"),
-        "HOST": os.environ.get("DATABASE_HOST", "127.0.0.1"),
-        "PORT": os.environ.get("DATABASE_PORT", "1433"),
+        "ENGINE": 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
 
