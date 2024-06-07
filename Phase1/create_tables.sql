@@ -6,7 +6,7 @@ CREATE TABLE Employee (
 	address NVARCHAR(255),
 	phone_number NCHAR(11) NOT NULL,
 	gender INT,
-	resume TEXT,
+	resume NVARCHAR(MAX),
 	bank_account_number NCHAR(16),
 	started_at DATE NOT NULL,
 	[role] NVARCHAR(30),
@@ -111,7 +111,7 @@ CREATE TABLE Item (
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	title NVARCHAR(255) NOT NULL,
 	cateorgy NVARCHAR(255),
-	description TEXT,
+	description NVARCHAR(MAX),
 	cooking BIT NOT NULL,
 	price INT NOT NULL,
 	amount INT
@@ -135,7 +135,7 @@ CREATE TABLE Order_Item (
 
 CREATE TABLE Recipe (
 	id INT IDENTITY(1,1) PRIMARY KEY,
-	instructions TEXT
+	instructions NVARCHAR(MAX)
 )
 
 
