@@ -23,6 +23,8 @@ CREATE TABLE UpdateLog (
 
 -- Create Triggers
 
+GO
+
 -- Insert Trigger for Employee
 CREATE TRIGGER trg_Insert_Employee
 ON Employee
@@ -40,6 +42,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Employee', @json);
 END;
+GO
 
 -- Delete Trigger for Employee
 CREATE TRIGGER trg_Delete_Employee
@@ -58,6 +61,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Employee', @json);
 END;
+GO
 
 -- Update Trigger for Employee
 CREATE TRIGGER trg_Update_Employee
@@ -83,6 +87,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Employee', @previous_json, @changed_json);
 END;
+GO
 
 
 -- Insert Trigger for Chef
@@ -102,6 +107,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Chef', @json);
 END;
+GO
 
 -- Delete Trigger for Chef
 CREATE TRIGGER trg_Delete_Chef
@@ -120,6 +126,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Chef', @json);
 END;
+GO
 
 -- Update Trigger for Chef
 CREATE TRIGGER trg_Update_Chef
@@ -145,7 +152,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Chef', @previous_json, @changed_json);
 END;
-
+GO
 
 
 -- Insert Trigger for Waiter
@@ -165,6 +172,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Waiter', @json);
 END;
+GO
 
 -- Delete Trigger for Waiter
 CREATE TRIGGER trg_Delete_Waiter
@@ -183,6 +191,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Waiter', @json);
 END;
+GO
 
 -- Update Trigger for Waiter
 CREATE TRIGGER trg_Update_Waiter
@@ -208,6 +217,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Waiter', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -229,6 +239,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Shipper', @json);
 END;
+GO
 
 -- Delete Trigger for Shipper
 CREATE TRIGGER trg_Delete_Shipper
@@ -247,6 +258,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Shipper', @json);
 END;
+GO
 
 -- Update Trigger for Shipper
 CREATE TRIGGER trg_Update_Shipper
@@ -272,6 +284,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Shipper', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -294,6 +307,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Manager', @json);
 END;
+GO
 
 -- Delete Trigger for Manager
 CREATE TRIGGER trg_Delete_Manager
@@ -312,6 +326,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Manager', @json);
 END;
+GO
 
 -- Update Trigger for Manager
 CREATE TRIGGER trg_Update_Manager
@@ -337,6 +352,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Manager', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -360,6 +376,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Customer', @json);
 END;
+GO
 
 -- Delete Trigger for Customer
 CREATE TRIGGER trg_Delete_Customer
@@ -378,6 +395,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Customer', @json);
 END;
+GO
 
 -- Update Trigger for Customer
 CREATE TRIGGER trg_Update_Customer
@@ -403,6 +421,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Customer', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -429,6 +448,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Table', @json);
 END;
+GO
 
 -- Delete Trigger for Table
 CREATE TRIGGER trg_Delete_Table
@@ -447,6 +467,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Table', @json);
 END;
+GO
 
 -- Update Trigger for Table
 CREATE TRIGGER trg_Update_Table
@@ -472,6 +493,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Table', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -496,6 +518,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Order', @json);
 END;
+GO
 
 -- Delete Trigger for Order
 CREATE TRIGGER trg_Delete_Order
@@ -514,6 +537,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Order', @json);
 END;
+GO
 
 -- Update Trigger for Order
 CREATE TRIGGER trg_Update_Order
@@ -539,6 +563,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Order', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -563,6 +588,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Item', @json);
 END;
+GO
 
 -- Delete Trigger for Item
 CREATE TRIGGER trg_Delete_Item
@@ -581,6 +607,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Item', @json);
 END;
+GO
 
 -- Update Trigger for Item
 CREATE TRIGGER trg_Update_Item
@@ -606,6 +633,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Item', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -629,6 +657,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Order_Item', @json);
 END;
+GO
 
 -- Delete Trigger for Order_Item
 CREATE TRIGGER trg_Delete_Order_Item
@@ -647,6 +676,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Order_Item', @json);
 END;
+GO
 
 -- Update Trigger for Order_Item
 CREATE TRIGGER trg_Update_Order_Item
@@ -672,6 +702,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Order_Item', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -698,6 +729,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Recipe', @json);
 END;
+GO
 
 -- Delete Trigger for Recipe
 CREATE TRIGGER trg_Delete_Recipe
@@ -716,6 +748,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Recipe', @json);
 END;
+GO
 
 -- Update Trigger for Recipe
 CREATE TRIGGER trg_Update_Recipe
@@ -741,6 +774,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Recipe', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -771,6 +805,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Item_Recipe', @json);
 END;
+GO
 
 -- Delete Trigger for Item_Recipe
 CREATE TRIGGER trg_Delete_Item_Recipe
@@ -789,6 +824,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Item_Recipe', @json);
 END;
+GO
 
 -- Update Trigger for Item_Recipe
 CREATE TRIGGER trg_Update_Item_Recipe
@@ -814,6 +850,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Item_Recipe', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -840,6 +877,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('chef_Recipe', @json);
 END;
+GO
 
 -- Delete Trigger for chef_Recipe
 CREATE TRIGGER trg_Delete_chef_Recipe
@@ -858,6 +896,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('chef_Recipe', @json);
 END;
+GO
 
 -- Update Trigger for chef_Recipe
 CREATE TRIGGER trg_Update_chef_Recipe
@@ -883,6 +922,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('chef_Recipe', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -906,6 +946,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Ingredient', @json);
 END;
+GO
 
 -- Delete Trigger for Ingredient
 CREATE TRIGGER trg_Delete_Ingredient
@@ -924,6 +965,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Ingredient', @json);
 END;
+GO
 
 -- Update Trigger for Ingredient
 CREATE TRIGGER trg_Update_Ingredient
@@ -949,6 +991,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Ingredient', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -976,6 +1019,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Recipe_Ingredient', @json);
 END;
+GO
 
 -- Delete Trigger for Recipe_Ingredient
 CREATE TRIGGER trg_Delete_Recipe_Ingredient
@@ -994,6 +1038,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Recipe_Ingredient', @json);
 END;
+GO
 
 -- Update Trigger for Recipe_Ingredient
 CREATE TRIGGER trg_Update_Recipe_Ingredient
@@ -1019,6 +1064,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Recipe_Ingredient', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -1041,6 +1087,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Storehouse', @json);
 END;
+GO
 
 -- Delete Trigger for Storehouse
 CREATE TRIGGER trg_Delete_Storehouse
@@ -1059,6 +1106,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Storehouse', @json);
 END;
+GO
 
 -- Update Trigger for Storehouse
 CREATE TRIGGER trg_Update_Storehouse
@@ -1084,6 +1132,7 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Storehouse', @previous_json, @changed_json);
 END;
+GO
 
 
 
@@ -1109,6 +1158,7 @@ BEGIN
     INSERT INTO InsertLog (table_name, changed_data)
     VALUES ('Storehouse_Ingredient', @json);
 END;
+GO
 
 -- Delete Trigger for Storehouse_Ingredient
 CREATE TRIGGER trg_Delete_Storehouse_Ingredient
@@ -1127,6 +1177,7 @@ BEGIN
     INSERT INTO DeleteLog (table_name, changed_data)
     VALUES ('Storehouse_Ingredient', @json);
 END;
+GO
 
 -- Update Trigger for Storehouse_Ingredient
 CREATE TRIGGER trg_Update_Storehouse_Ingredient
@@ -1152,3 +1203,4 @@ BEGIN
     INSERT INTO UpdateLog (table_name, previous_data, changed_data)
     VALUES ('Storehouse_Ingredient', @previous_json, @changed_json);
 END;
+GO
