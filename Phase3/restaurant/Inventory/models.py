@@ -23,8 +23,8 @@ class Storehouse(models.Model):
 
 class StorehouseIngredient(models.Model):
     id = models.BigAutoField(primary_key=True)
-    storehouse = models.OneToOneField(Storehouse, models.DO_NOTHING)
-    ingredient = models.ForeignKey(Ingredient, models.DO_NOTHING)
+    storehouse = models.ForeignKey(Storehouse, models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, models.CASCADE)
     amount = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -43,8 +43,8 @@ class Recipe(models.Model):
 
 class RecipeIngredient(models.Model):
     id = models.BigAutoField(primary_key=True)
-    recipe = models.OneToOneField(Recipe, models.DO_NOTHING)
-    ingredient = models.ForeignKey(Ingredient, models.DO_NOTHING)
+    recipe = models.ForeignKey(Recipe, models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, models.CASCADE)
     amount = models.IntegerField(blank=True, null=True)
 
     class Meta:
@@ -54,8 +54,8 @@ class RecipeIngredient(models.Model):
 
 class ChefRecipe(models.Model):
     id = models.BigAutoField(primary_key=True)
-    chef_ssn = models.OneToOneField(Chef, models.DO_NOTHING, db_column="chef_ssn")
-    recipe = models.ForeignKey(Recipe, models.DO_NOTHING)
+    chef_ssn = models.ForeignKey(Chef, models.CASCADE, db_column="chef_ssn")
+    recipe = models.ForeignKey(Recipe, models.CASCADE)
 
     class Meta:
         db_table = "chef_Recipe"
