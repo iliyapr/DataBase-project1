@@ -3,4 +3,3 @@ venv/
 mydatabase.db
 .env
 db.sqlite3
-migrations*
