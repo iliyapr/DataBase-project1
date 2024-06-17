@@ -40,8 +40,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     id = models.BigAutoField(primary_key=True)
-    order = models.OneToOneField(Order, models.DO_NOTHING)
-    item = models.ForeignKey(Item, models.DO_NOTHING)
+    order = models.ForeignKey(Order, models.CASCADE)
+    item = models.ForeignKey(Item, models.CASCADE)
     amount = models.IntegerField()
     rate = models.IntegerField(blank=True, null=True)
 
@@ -61,8 +61,8 @@ class Table(models.Model):
 
 class ItemRecipe(models.Model):
     id = models.BigAutoField(primary_key=True)
-    item = models.OneToOneField(Item, models.DO_NOTHING)
-    recipe = models.ForeignKey(Recipe, models.DO_NOTHING)
+    item = models.ForeignKey(Item, models.CASCADE)
+    recipe = models.ForeignKey(Recipe, models.CASCADE)
 
     class Meta:
         db_table = "Item_Recipe"
