@@ -27,18 +27,31 @@
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8000/api/employees",
+							"raw": "localhost:8000/api/employees/1234566",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"employees"
+								"employees",
+								"1234566"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -86,7 +99,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"first_name\": \"arman\",\n    \"last_name\": \"shakerian\",\n    \"phone_number\": \"09101509524\",\n    \"started_at\": \"2022-10-10\",\n    \"status\": 10\n}",
+							"raw": "{\n    \"ssn\": 123,\n    \"first_name\": \"arman\",\n    \"last_name\": \"shakerian\",\n    \"phone_number\": \"09101509524\",\n    \"started_at\": \"2022-10-10\",\n    \"status\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,14 +107,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/employees",
+							"raw": "localhost:8000/api/employees/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"employees"
+								"employees",
+								""
 							]
 						},
 						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
@@ -138,14 +152,16 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/employees",
+							"raw": "localhost:8000/api/employees/1234566/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"employees"
+								"employees",
+								"1234566",
+								""
 							]
 						},
 						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
@@ -182,14 +198,16 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/employees",
+							"raw": "localhost:8000/api/employees/1234566/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"employees"
+								"employees",
+								"1234566",
+								""
 							]
 						},
 						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
@@ -202,7 +220,7 @@
 			"name": "Chef",
 			"item": [
 				{
-					"name": "Get one chef Copy",
+					"name": "Get one chef",
 					"event": [
 						{
 							"listen": "test",
@@ -221,7 +239,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/chefs/",
+							"raw": "localhost:8000/api/chefs/1234566",
 							"host": [
 								"localhost"
 							],
@@ -229,7 +247,7 @@
 							"path": [
 								"api",
 								"chefs",
-								""
+								"1234566"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -331,7 +349,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/chefs/",
+							"raw": "localhost:8000/api/chefs/1234566/",
 							"host": [
 								"localhost"
 							],
@@ -339,6 +357,7 @@
 							"path": [
 								"api",
 								"chefs",
+								"1234566",
 								""
 							]
 						},
@@ -376,7 +395,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/chefs/",
+							"raw": "localhost:8000/api/chefs/1234566",
 							"host": [
 								"localhost"
 							],
@@ -384,7 +403,7 @@
 							"path": [
 								"api",
 								"chefs",
-								""
+								"1234566"
 							]
 						},
 						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
@@ -416,7 +435,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/waiters/",
+							"raw": "localhost:8000/api/waiters/1234566",
 							"host": [
 								"localhost"
 							],
@@ -424,7 +443,7 @@
 							"path": [
 								"api",
 								"waiters",
-								""
+								"1234566"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -473,7 +492,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"style\": \"Japanese\",\n    \"uniform_size\": 10\n}",
+							"raw": "{\n    \"ssn\": \"123\",\n    \"uniform_size\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -518,7 +537,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"uniform_size\": 17\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -526,7 +545,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/waiters/",
+							"raw": "localhost:8000/api/waiters/1234566/",
 							"host": [
 								"localhost"
 							],
@@ -534,6 +553,7 @@
 							"path": [
 								"api",
 								"waiters",
+								"1234566",
 								""
 							]
 						},
@@ -611,7 +631,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/managers/",
+							"raw": "localhost:8000/api/managers/1234566",
 							"host": [
 								"localhost"
 							],
@@ -619,7 +639,7 @@
 							"path": [
 								"api",
 								"managers",
-								""
+								"1234566"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -668,7 +688,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"responsibitiy\": \"head chef\"\n}",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"username\": \"manager2\",\n    \"password\": \"123232\",\n    \"responsibitiy\": \"head chef\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -713,7 +733,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"username\": \"manager2\",\n    \"password\": \"123232\",\n    \"responsibitiy\": \"head manager\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -721,7 +741,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/managers/",
+							"raw": "localhost:8000/api/managers/1234566/",
 							"host": [
 								"localhost"
 							],
@@ -729,6 +749,7 @@
 							"path": [
 								"api",
 								"managers",
+								"1234566",
 								""
 							]
 						},
@@ -766,7 +787,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/managers/",
+							"raw": "localhost:8000/api/managers/1234566/",
 							"host": [
 								"localhost"
 							],
@@ -774,6 +795,7 @@
 							"path": [
 								"api",
 								"managers",
+								"1234566",
 								""
 							]
 						},
@@ -806,7 +828,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/shippers/",
+							"raw": "localhost:8000/api/shippers/1234566",
 							"host": [
 								"localhost"
 							],
@@ -814,7 +836,7 @@
 							"path": [
 								"api",
 								"shippers",
-								""
+								"1234566"
 							]
 						},
 						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -863,7 +885,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232,\n    \"vehicle_model\": \"xss\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -908,7 +930,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232,\n    \"vehicle_model\": \"tt\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -916,7 +938,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/shippers/",
+							"raw": "localhost:8000/api/shippers/1234566/",
 							"host": [
 								"localhost"
 							],
@@ -924,6 +946,7 @@
 							"path": [
 								"api",
 								"shippers",
+								"1234566",
 								""
 							]
 						},
@@ -987,7 +1010,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/items/",
+							"raw": "localhost:8000/api/items/1",
 							"host": [
 								"localhost"
 							],
@@ -995,7 +1018,7 @@
 							"path": [
 								"api",
 								"items",
-								""
+								"1"
 							]
 						}
 					},
@@ -1043,7 +1066,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"recipes\":[\"2\"],\n    \"title\": \"pizza\",\n    \"cooking\": \"0\",\n    \"price\": \"120\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1088,7 +1111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"recipes\": [\"1\", \"2\"],\n    \"title\": \"pizza\",\n    \"cateorgy\": \"cat1\",\n    \"description\": \"desc1\",\n    \"cooking\": false,\n    \"price\": 122,\n    \"amount\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1096,7 +1119,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/items/",
+							"raw": "localhost:8000/api/items/1/",
 							"host": [
 								"localhost"
 							],
@@ -1104,6 +1127,7 @@
 							"path": [
 								"api",
 								"items",
+								"1",
 								""
 							]
 						},
@@ -1167,14 +1191,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/tables",
+							"raw": "localhost:8000/api/tables/12",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"api",
-								"tables"
+								"tables",
+								"12"
 							]
 						}
 					},
@@ -1222,7 +1247,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"number\": 12,\n    \"capacity\": 6,\n    \"status\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1267,7 +1292,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"number\": 12,\n    \"capacity\": 6,\n    \"status\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1275,7 +1300,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/tables/",
+							"raw": "localhost:8000/api/tables/12/",
 							"host": [
 								"localhost"
 							],
@@ -1283,6 +1308,7 @@
 							"path": [
 								"api",
 								"tables",
+								"12",
 								""
 							]
 						},
@@ -1401,7 +1427,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"items\": [{\"item\": 1, \"amount\": 1}],\n    \"ordered_at\": \"2020-10-10\",\n    \"status\": \"2\",\n    \"payment\": \"120\",\n    \"order_type\": \"2\",\n    \"customer\": \"2\",\n    \"shipper_ssn\": \"1234566\",\n    \"waiter_ssn\": \"123\",\n    \"table_number\": 12,\n    \"discount\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1446,7 +1472,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"items\": [{\"item\": 1, \"amount\": 1}],\n    \"ordered_at\": \"2020-10-10\",\n    \"status\": \"2\",\n    \"payment\": \"120\",\n    \"order_type\": \"2\",\n    \"customer\": \"2\",\n    \"shipper_ssn\": \"1234566\",\n    \"waiter_ssn\": \"123\",\n    \"table_number\": 12,\n    \"discount\": 11\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1454,7 +1480,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/orders/",
+							"raw": "localhost:8000/api/orders/1/",
 							"host": [
 								"localhost"
 							],
@@ -1462,6 +1488,7 @@
 							"path": [
 								"api",
 								"orders",
+								"1",
 								""
 							]
 						},
@@ -1499,7 +1526,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/orders/",
+							"raw": "localhost:8000/api/orders/2/",
 							"host": [
 								"localhost"
 							],
@@ -1507,6 +1534,7 @@
 							"path": [
 								"api",
 								"orders",
+								"2",
 								""
 							]
 						},
@@ -1525,7 +1553,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/customers/",
+							"raw": "localhost:8000/api/customers/2",
 							"host": [
 								"localhost"
 							],
@@ -1533,7 +1561,7 @@
 							"path": [
 								"api",
 								"customers",
-								""
+								"2"
 							]
 						}
 					},
@@ -1581,7 +1609,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"id\": 1,\n    \"phone_number\": \"091121111\",\n    \"first_name\": \"ehsan\",\n    \"last_name\": \"alikhani\",\n    \"address\": \"add1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1626,7 +1654,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"phone_number\": \"091111111\",\n    \"first_name\": \"ehsan\",\n    \"last_name\": \"moradi\",\n    \"address\": \"add2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1634,7 +1662,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/customers/",
+							"raw": "localhost:8000/api/customers/1/",
 							"host": [
 								"localhost"
 							],
@@ -1642,6 +1670,7 @@
 							"path": [
 								"api",
 								"customers",
+								"1",
 								""
 							]
 						},
@@ -1761,7 +1790,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"storehouses\": [\"1\"],\n    \"name\": \"walnut\",\n    \"type\": \"beans\",\n    \"unit\": \"kg\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1806,7 +1835,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"storehouses\": [\"1\"],\n    \"name\": \"walnut\",\n    \"type\": \"beans\",\n    \"unit\": \"L\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1814,7 +1843,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/ingredients/",
+							"raw": "localhost:8000/api/ingredients/6/",
 							"host": [
 								"localhost"
 							],
@@ -1822,6 +1851,7 @@
 							"path": [
 								"api",
 								"ingredients",
+								"6",
 								""
 							]
 						},
@@ -1885,7 +1915,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/storehouses/",
+							"raw": "localhost:8000/api/storehouses/2",
 							"host": [
 								"localhost"
 							],
@@ -1893,7 +1923,7 @@
 							"path": [
 								"api",
 								"storehouses",
-								""
+								"2"
 							]
 						}
 					},
@@ -1941,7 +1971,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"address\": \"A street\",\n    \"manager_ssn\": \"1234566\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1986,7 +2016,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"address\": \"Lale street\",\n    \"manager_ssn\": \"1234566\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1994,7 +2024,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/storehouses/",
+							"raw": "localhost:8000/api/storehouses/2/",
 							"host": [
 								"localhost"
 							],
@@ -2002,6 +2032,7 @@
 							"path": [
 								"api",
 								"storehouses",
+								"2",
 								""
 							]
 						},
@@ -2065,7 +2096,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/api/recipes/",
+							"raw": "localhost:8000/api/recipes/2",
 							"host": [
 								"localhost"
 							],
@@ -2073,7 +2104,7 @@
 							"path": [
 								"api",
 								"recipes",
-								""
+								"2"
 							]
 						}
 					},
@@ -2121,7 +2152,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"ssn\": 1234566,\n    \"vehicle_plate_number\" : 1232\n}",
+							"raw": "{\n    \"ingredients\": [\"1\", \"2\"],\n    \"instructions\": \"instruction 1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2166,7 +2197,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"ssn\": \"1234566\",\n    \"style\": \"hmmmm\",\n    \"uniform_size\": 14\n}",
+							"raw": "{\n    \"ingredients\": [\"1\", \"2\"],\n    \"instructions\": \"instruction 2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2174,7 +2205,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/api/recipes/",
+							"raw": "localhost:8000/api/recipes/2/",
 							"host": [
 								"localhost"
 							],
@@ -2182,6 +2213,7 @@
 							"path": [
 								"api",
 								"recipes",
+								"2",
 								""
 							]
 						},
